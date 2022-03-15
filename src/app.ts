@@ -1,8 +1,24 @@
-import Fastify from 'fastify';
+import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
+import fjwt from 'fastify-jwt';
 import userRoutes from './modules/user/user.route';
 import { userSchemas } from './modules/user/user.schema';
 
-const server = Fastify();
+export const server = Fastify();
+
+server.register(fjwt, {
+  // FIXME: get something from env instead
+  secret: 'sdlkfgjalsdgkjaldkjasdlbfasdfjkl',
+});
+
+// wherever we use the 'authenticate' decorator, this function is run
+// like express middleware
+server.decorate('authenticate', async (request: FastifyRequest, reply: FastifyReply) => {
+  try {
+    await request.jwtVerify();
+  } catch(e) {
+    return reply.send(e);
+  }
+})
 
 server.get('/healthcheck', async function () {
   return { status: 'OK' };
