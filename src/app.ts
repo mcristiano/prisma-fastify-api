@@ -10,6 +10,14 @@ server.register(fjwt, {
   secret: 'sdlkfgjalsdgkjaldkjasdlbfasdfjkl',
 });
 
+// adding authenticate to our server so we have it on all routes
+// might be better to define this in a types file or something
+declare module "fastify" {
+  export interface FastifyInstance {
+    authenticate: any;
+  }
+}
+
 // wherever we use the 'authenticate' decorator, this function is run
 // like express middleware
 server.decorate('authenticate', async (request: FastifyRequest, reply: FastifyReply) => {
