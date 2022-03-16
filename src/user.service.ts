@@ -1,7 +1,10 @@
-import { hashPassword } from '../../utils/hash';
-import prisma from '../../utils/prisma';
-import { CreateUserInput } from './user.schema';
+import { hashPassword } from './utils/hash';
+import prisma from './utils/prisma';
+import { CreateUserInput } from './modules/user/user.schema';
 
+// We could type input as Pick<UserCreateInput, [email, name, password]>
+// or something like that and that would work fine. But using Zod here
+// instead for easy schema validation and error messages
 export async function createUser(input: CreateUserInput) {
   const { password, ...rest } = input;
 
