@@ -1,5 +1,4 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { server } from '../../app';
 import { verifyPassword } from '../../utils/hash';
 import { CreateUserInput, LoginUserInput } from './user.schema';
 import { createUser, findUserByEmail, findUsers } from './user.service';
@@ -52,7 +51,7 @@ export async function loginUserHandler(request: FastifyRequest<{
   if (correctPassword) {
     const {password, salt, ...rest} = user;
 
-    return { accessToken: server.jwt.sign(rest) };
+    return { accessToken: request.jwt.sign(rest) };
   }
 
   // respond
