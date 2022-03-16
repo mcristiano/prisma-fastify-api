@@ -1,5 +1,3 @@
-import { triggerAsyncId } from 'async_hooks';
-import { string } from 'zod';
 import prisma from '../../utils/prisma';
 import { CreateProductInput } from './product.schema';
 
@@ -21,12 +19,7 @@ export function getProducts() {
       id: true,
       createdAt: true,
       updatedAt: true,
-      owner: {
-        select: {
-          name: true,
-          id: true,
-        },
-      },
+      owner: true,
     },
   });
 }

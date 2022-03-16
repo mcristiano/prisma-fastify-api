@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { buildJsonSchemas } from 'fastify-zod';
 
-const userCore = {
+export const userCore = {
   email: z
     .string({
       required_error: 'Email is required',

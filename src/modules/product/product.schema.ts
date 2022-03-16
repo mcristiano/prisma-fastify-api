@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { buildJsonSchemas } from 'fastify-zod';
+import { userCore } from "../user/user.schema"
 
 const productInput = {
   title: z.string(),
@@ -11,6 +12,7 @@ const productGenerated = {
   id: z.number(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  owner: z.object(userCore),
 };
 
 const createProductSchema = z.object({ ...productInput });
