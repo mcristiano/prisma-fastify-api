@@ -15,4 +15,4 @@ Fastify is also quite nice, with some great benefits over Express such as:
 - Create swagger docs for free with fastify-zod
 - Significantly better performance (about 4x)
 
-The main downside of Fastify is that it has WAY fewer users than Express, so I think for many types of projets I would continue to use Express for the time being.
+The main downside of Fastify is that it has WAY fewer users than Express, so I think for many types of projects I would continue to use Express for the time being.
