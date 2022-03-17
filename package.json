@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --exit-child src/app.ts",
-    "test": "tap --node-arg=--require=ts-node/register"
+    "test": "tap --test-env=DATABASE_URL=postgresql://postgres:changeme@localhost:5432/fastify-test-db?schema=public --node-arg=--require=ts-node/register"
   },
   "dependencies": {
     "@faker-js/faker": "^6.0.0",
