@@ -11,10 +11,6 @@ export async function registerUserHandler(
 ) {
   const body = request.body
 
-  // even if we send additional stuff in the request, it won't be on the
-  // object thanks to fastify-zod
-  console.log(body);
-
   try {
     const user = await createUser(body)
 
