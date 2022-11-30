@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -25,7 +25,7 @@ model Product {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
+  title     String   //@db.VarChar(255)
   content   String?
   price     Float
   owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
